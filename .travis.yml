@@ -22,4 +22,4 @@ script:
   - cat $HOME/.m2/settings.xml
   #deploying the app on Docker
   # - mvn deploy
-  - mvn
+  - mvn clean
