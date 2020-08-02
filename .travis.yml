@@ -2,21 +2,22 @@ language: java
 
 jdk: openjdk8
 
-services:  - xvfb
+services:  
+  - xvfb
   - docker
 
 before_install:
   - sudo apt update
-   - sudo apt install openjfx
-   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
-   - docker pull openjdk:8-jdk
+  - sudo apt install openjfx
+  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull openjdk:8-jdk
 
 
 install: true
 
 
 script: 
-    - cat $HOME/.m2/settings.xml
+  #  - cat $HOME/.m2/settings.xml
     - ./build.sh
   #- dir
   #- cd microservice_B_(Java_wSpringBoot) 
