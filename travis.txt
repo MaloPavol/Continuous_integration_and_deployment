@@ -1,23 +1,22 @@
-language: java
+# language: java
 
-jdk: openjdk8
+# jdk: openjdk8
 
-services:  - xvfb
-  - docker
+# services:
+#  - xvfb
+#  - docker
 
-before_install:
-  - sudo apt update
-   - sudo apt install openjfx
-   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
-   - docker pull openjdk:8-jdk
-
-
-install: true
+#before_install:
+#  - sudo apt update
+  # - sudo apt install openjfx
+  # - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+  # - docker pull openjdk:8-jdk
 
 
-script: 
-    - cat $HOME/.m2/settings.xml
-    - ./build.sh
+#install: true
+
+
+#script: ./build.sh
   #- dir
   #- cd microservice_B_(Java_wSpringBoot) 
   #- mvn clean
@@ -29,16 +28,16 @@ script:
   # - mvn deploy
   # - mvn clean
 
-#  language: java
-#jdk:
-# - openjdk8
-#services:
+  language: java
+jdk:
+ - openjdk8
+services:
  #Linking Travis CI and Docker
-# - docker
-# before_install:
-# - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-# - docker pull openjdk:8-jdk
-#script:
+ - docker
+before_install:
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+ - docker pull openjdk:8-jdk
+script:
  #We avoid this error :" the job exceeded the maximum log length and has been terminated "
 #  - echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings
 # xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
@@ -53,7 +52,7 @@ script:
 # <enabled>true</enabled>\n </releases>\n <snapshots>\n
 # <enabled>true</enabled>\n </snapshots>\n </repository>\n
 # </repositories>\n </profile>\n </profiles>\n <activeProfiles>\n <activeProfile>nomvnsearch</activeProfile>\n </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
-# - cat $HOME/.m2/settings.xml
+ - cat $HOME/.m2/settings.xml
  #deploying the app on Docker
-# - cd ..
-# - mvn deploy
+ - cd ..
+ - mvn deploy
