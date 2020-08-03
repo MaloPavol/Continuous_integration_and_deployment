@@ -60,6 +60,6 @@ script:
 # - mvn deploy
 
 after_success:
-  - export CODECOV_TOKEN="token"
+#  - export CODECOV_TOKEN="token"
   - bash <(curl -s https://codecov.io/bash)
  
