@@ -12,9 +12,9 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
   - docker pull openjdk:8-jdk
 
-env:
-  global:
-    - CODECOV_TOKEN=:uuid-repo-token
+# env:
+#  global:
+#    - CODECOV_TOKEN=:uuid-repo-token
 
 install: true
 
@@ -66,5 +66,5 @@ script:
 #  - export CODECOV_TOKEN="token"
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) 
+  - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
  
