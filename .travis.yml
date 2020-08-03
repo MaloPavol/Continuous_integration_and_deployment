@@ -7,8 +7,8 @@ services:
   - docker
 
 before_install:
-#  - sudo apt update
-#  - sudo apt install openjfx
+  - sudo apt update
+  - sudo apt install openjfx
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
   - docker pull openjdk:8-jdk
 
@@ -63,5 +63,5 @@ script:
 #  - export CODECOV_TOKEN="token"
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t token
+  - bash <(curl -s https://codecov.io/bash) 
  
