@@ -1,5 +1,5 @@
 codecov:
-    token: "<some token here>"
+    token: "$CODECOV_TOKEN"
     bot: "codecov-io"
     ci:
       - "travis.org"
