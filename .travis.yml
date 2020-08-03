@@ -60,5 +60,5 @@ script:
 # - mvn deploy
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
+  - bash <(curl -s https://codecov.io/bash) -t token
  
