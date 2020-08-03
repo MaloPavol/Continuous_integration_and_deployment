@@ -19,6 +19,7 @@ install: true
 script: 
   #  - cat $HOME/.m2/settings.xml
     - ./build.sh
+  #  - "mvn cobertura:cobertura"
   #- dir
   #- cd microservice_B_(Java_wSpringBoot) 
   #- mvn clean
@@ -62,5 +63,5 @@ script:
 #  - export CODECOV_TOKEN="token"
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
  
