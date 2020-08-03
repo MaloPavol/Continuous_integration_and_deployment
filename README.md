@@ -23,4 +23,7 @@
 
 <img src="https://img.shields.io/docker/v/malopavol/continuous_integration_and_deployment">
 
+<img src="https://codecov.io/gh/MaloPavol/Continuous_integration_and_deployment/branch/master/graph/badge.svg?token=M6W1KBP1SA" />
+
+
 </p>
