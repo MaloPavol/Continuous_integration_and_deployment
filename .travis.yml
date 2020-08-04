@@ -7,6 +7,7 @@ services:
   - docker
 
 before_install:
+  - mvn clean
   - sudo apt update
   - sudo apt install openjfx
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
@@ -66,5 +67,6 @@ script:
 #  - export CODECOV_TOKEN="token"
 
 after_success:
+  - travis_wait mvn site
   - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
- 
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent 
