@@ -1,15 +1,6 @@
 # Continuous Integration and Deployment
 
-
-
-
-
-
-
-
-
 <p align="left">
-
 
 <img src="https://travis-ci.com/MaloPavol/Continuous_integration_and_deployment.svg?token=htDJRY5udRNq1qSjeqge&branch=master">
 
@@ -28,3 +19,5 @@
 </a>
 
 </p>
+
+This demo project is on its way!

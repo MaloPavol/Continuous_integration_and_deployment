@@ -6,6 +6,13 @@ services:
   - xvfb
   - docker
 
+addons:
+  sonarcloud:
+    organization: "cicd-applied-to-spring-boot-java-app"
+    token:
+      secure: $SONAR_TOKEN # encrypted value of your token
+  
+
 before_install:
   # - mvn clean
   - sudo apt update
@@ -69,4 +76,4 @@ script:
 after_success:
   - travis_wait mvn site
   - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent 
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
