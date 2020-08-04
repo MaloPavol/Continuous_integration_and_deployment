@@ -18,6 +18,10 @@
   <img src="https://codecov.io/gh/MaloPavol/Continuous_integration_and_deployment/branch/master/graph/badge.svg?token=M6W1KBP1SA" />
 </a>
 
+
+
 </p>
+
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=continuous_integration_and_deployment)](https://sonarcloud.io/dashboard/index/com.cicd:continuous_integration_and_deployment)
 
 This demo project is on its way!
