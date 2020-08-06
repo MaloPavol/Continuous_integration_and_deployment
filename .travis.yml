@@ -12,7 +12,7 @@ addons:
   sonarcloud:
     organization: "continuous-integration-and-deployment"
     token:
-      secure: $SONAR_TOKEN # encrypted value of your token
+      secure: "$SONAR_TOKEN_PROJECT" # encrypted value of your token
   
 
 
