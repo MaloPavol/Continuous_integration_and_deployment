@@ -1,88 +1,24 @@
 language: java
-
 jdk: openjdk8
-
-services:  
-  - xvfb
-  - docker
-
+services:
+- xvfb
+- docker
 dist: xenial
-
 addons:
   sonarcloud:
-    organization: "continuous-integration-and-deployment"
+    organization: continuous-integration-and-deployment
     token:
-      secure: "oFBgbYTSvUYWYTggJfr3Xma8MbKubIzquaDT/AWI7cIAHqroxzL+rmbm2fNkMS89kQErYzjGLgXX1b7mODHVdW9AkxrXk7N9E8oPeKKCx4227swvOeOWTSHxfoZV0Ohl7yuTI094rFbX81YLqIXVKwCYJg7O305mVPCEjiXtxCG02YA+rV5wt7GJ4RClUb/NS/2iO4djOWNl5l88NPrcrnHLUEEVfi0W4hohTIbezXCrIXZz8xjgDThZzN83UoDjwok8lulam5o95o10+O/9+uvaDpTo1oJabAZUrcA9kVYyFZJiyR0gv8pVKNaq/DxDHiOcNPnnDSlNKMQQhoWu1OegffMWl1wh0sfp0vO6ePAnq93Z07LmupGzevOZ684J7l378CiejzKrmvw4Khrjp3aZExLJdmDFm3H3xOt4KEhCb2xwMm7Es69ARBI+WxWiXHmmCuB1jQa9II8iEeWFQ0wOMBihVt9fjoRWoYt+E59OBCVycEEWu6u0xMNg/DZQaAVQ47padRqTCufS+J8ju5v3lYkICcXlHEuaFkwodkbjNN4suRqKjuQ9Wvp+vf77l0Sp5Cv+PcA8v8vX3pfx0ju8uozko1NjZEwJgZcWfZvv/ATZljH+5zpEGIof4hc35c9I3Hb97r4WK4F1KwTjY1a+9p7Oz8dwNxxsKdkJew4="
- 
-
+      secure: XeWtaoUBTwNMie4GDBDDfCEfiSacpD0wnvUjYy0CbeEnTD2yEZyTESvnIA4Ve76E9q+g4kqNtJyShleksbDMMnMY7wFQ2dn0pvY1TPkROLnA+Lp8T/L43N0bcHWXnjpFLh9D0xJGToj1JnL9IegSfmMPJKiTC2JMwVhUyEi4eAAwvFsfP8GXXJ9op2XMg34VPL1oWEzBH1m0SdBiyPefgoYw8cxSSiOOazZJy+QaUIzI/WHo957MWAZWaUVCzAlARAlE3H6t8bVEb55AWkOwzTLokckcSmcB3lJOd9oTwM6PN/Vl4EYnJo10IHuOfrZS0/OilcUCle5OV+/xu2KJrswL7tmeGUbFhO40EjiITiHLXX9Vw5i7pt0e5a3gqMyatyxIC05Oj+nS+k/j/PvMqCZ97iO0SckOUQEXV58lcbNcycOWOnXaUsKpDA0r0kFG5pxmrJZo+puNHxBQFXomPyHzHNyQpzNHkc+hSUc2Shap6oThVuTjqP0FNoeNaDbU0a5FIQ4Am2kJm99MbrNy3h3xbC0q9nmKbtwbGxegL6kgmf7AD2HH8RdG7S3QuW10qGb8X6erXcXjQsd8AnvZ3275xtjnc5Nxc3iOGXB5c4HAs7UTHVyxIFjf5E0wFeCztnDfZyAVtt+dO6Y6boBzY8qwxzDyzNO5CJwSFUTQgyU=
 before_install:
-  # - mvn clean
-  - sudo apt update
-  - sudo apt install openjfx
-  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
-  - docker pull openjdk:8-jdk
-
-# env:
-#  global:
-#    - CODECOV_TOKEN=:uuid-repo-token
-
+- sudo apt update
+- sudo apt install openjfx
+- echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+- docker pull openjdk:8-jdk
 install: true
-
-
-
-#script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
- # - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-
-# travis encrypt f7c7d23647660f233b403809fed54b0fffd0e824
-
-script: 
-  #  - cat $HOME/.m2/settings.xml
-    - ./build.sh
-  #  - "mvn cobertura:cobertura"
-  #- dir
-  #- cd microservice_B_(Java_wSpringBoot) 
-  #- mvn clean
-  #We avoid this error :" the job exceeded the maximum log length and has been terminated "
-  #- echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
-  #- cat $HOME/.m2/settings.xml
-  #deploying the app on Docker
-  #- 
-  # - mvn deploy
-  # - mvn clean
-
-#  language: java
-#jdk:
-# - openjdk8
-#services:
- #Linking Travis CI and Docker
-# - docker
-# before_install:
-# - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-# - docker pull openjdk:8-jdk
-#script:
- #We avoid this error :" the job exceeded the maximum log length and has been terminated "
-#  - echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings
-# xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0
-# http://maven.apache.org/xsd/settings-1.1.0.xsd"
-# xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n
-# xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n <mirrors>\n <mirror>\n
-# <id>mvnsearch-unavailable</id>\n <name>mvnsearch-unavailable</name>\n
-# <mirrorOf>mvnsearch</mirrorOf>\n <url>http://repo1.maven.org/maven2</url>\n
-# </mirror>\n </mirrors>\n <profiles>\n <profile>\n <id>no-mvnsearch</id>\n
-# <repositories>\n <repository>\n <id>mvnsearch</id>\n
-# <url>http://www.mvnsearch.org/maven2</url>\n <releases>\n
-# <enabled>true</enabled>\n </releases>\n <snapshots>\n
-# <enabled>true</enabled>\n </snapshots>\n </repository>\n
-# </repositories>\n </profile>\n </profiles>\n <activeProfiles>\n <activeProfile>nomvnsearch</activeProfile>\n </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
-# - cat $HOME/.m2/settings.xml
- #deploying the app on Docker
-# - cd ..
-# - mvn deploy
-
-#  - export CODECOV_TOKEN="token"
-
+script:
+- "./build.sh"
 after_success:
- # - travis_wait mvn site
-  - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
- # - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=continuous_integration_and_deployment
+- bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
+env:
+  global:
+    secure: XeWtaoUBTwNMie4GDBDDfCEfiSacpD0wnvUjYy0CbeEnTD2yEZyTESvnIA4Ve76E9q+g4kqNtJyShleksbDMMnMY7wFQ2dn0pvY1TPkROLnA+Lp8T/L43N0bcHWXnjpFLh9D0xJGToj1JnL9IegSfmMPJKiTC2JMwVhUyEi4eAAwvFsfP8GXXJ9op2XMg34VPL1oWEzBH1m0SdBiyPefgoYw8cxSSiOOazZJy+QaUIzI/WHo957MWAZWaUVCzAlARAlE3H6t8bVEb55AWkOwzTLokckcSmcB3lJOd9oTwM6PN/Vl4EYnJo10IHuOfrZS0/OilcUCle5OV+/xu2KJrswL7tmeGUbFhO40EjiITiHLXX9Vw5i7pt0e5a3gqMyatyxIC05Oj+nS+k/j/PvMqCZ97iO0SckOUQEXV58lcbNcycOWOnXaUsKpDA0r0kFG5pxmrJZo+puNHxBQFXomPyHzHNyQpzNHkc+hSUc2Shap6oThVuTjqP0FNoeNaDbU0a5FIQ4Am2kJm99MbrNy3h3xbC0q9nmKbtwbGxegL6kgmf7AD2HH8RdG7S3QuW10qGb8X6erXcXjQsd8AnvZ3275xtjnc5Nxc3iOGXB5c4HAs7UTHVyxIFjf5E0wFeCztnDfZyAVtt+dO6Y6boBzY8qwxzDyzNO5CJwSFUTQgyU=
