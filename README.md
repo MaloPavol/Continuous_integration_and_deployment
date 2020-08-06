@@ -18,10 +18,16 @@
   <img src="https://codecov.io/gh/MaloPavol/Continuous_integration_and_deployment/branch/master/graph/badge.svg?token=M6W1KBP1SA" />
 </a>
 
+<a href="https://sonarcloud.io/dashboard?id=continuous_integration_and_deployment">
+  <img src="https://sonarcloud.io/api/project_badges/measure?project=continuous_integration_and_deployment&metric=alert_status">
+</a>
 
+<a href="https://opensource.org/licenses/MIT">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
+</a>
 
 </p>
 
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=continuous_integration_and_deployment)](https://sonarcloud.io/dashboard/index/com.cicd:continuous_integration_and_deployment)
+
 
 This demo project is on its way!
