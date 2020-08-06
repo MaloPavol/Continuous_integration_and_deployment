@@ -177,6 +177,7 @@
 				<configuration>
 					<message>Building site for ${project.name} ${project.version}</message>
 					<server>github</server>
+					<project name="test" combine.self="override"/>
 
 				</configuration>
 				<executions>
