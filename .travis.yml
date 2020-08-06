@@ -33,5 +33,5 @@ script:
 - "./build.sh"
 
 after_success:
+- travis_wait mvn site
 - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
-- mvn site
