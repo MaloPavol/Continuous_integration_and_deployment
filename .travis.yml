@@ -86,4 +86,4 @@ script:
 after_success:
  # - travis_wait mvn site
   - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
- # - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
