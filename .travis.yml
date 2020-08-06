@@ -12,7 +12,7 @@ addons:
   sonarcloud:
     organization: "continuous-integration-and-deployment"
     token:
-      secure: "$SONAR_TOKEN_PROJECT" # encrypted value of your token
+      secure: "F89nwAAPeTVFSquNKQvyjNXrQoghgdX93bn96lU0QPmRT1UJzokkg59o82jGByeOVp3DDGlUS7KDTkmcZYsl+J7IwiOcbX78uZdl9+ehPSOOHehJ3eihGJtYQ1mjbelZkuDIdah/J/n4InzjnXelC1XOwZe8RKwxeDxSyrPPr170XtXmUZxPZR8RNZx7ZEfkn7Z8MUcn16DvTt1ENCurAvSdBSJ4ZlTz0zXFodT4I5hYcdT8mPG5PpHhxEuJFIp9/HSQg4EAGMgO02ni7F91irl8x7C2LoA18l2uWa8GYamWohz08IZy1eahiqei4vLF6OoRAiVvYOHgNkPPlCUhsQ4AYgQsUPwYLJm1KdIjoKF6SIOTB7e5Mp4+EDR/kMVwL7jua1YMA+OPIFcZtEv4JX0y/uYZdakBgy7++W2xnboAYgyBmcka0jsIssSOdtL3FoJC//8jggg6kbxB12Ra4T2jIydaOz0wzYD6lguC9isCkjnspYthi6lNOqN7yqQEV2JIgzJ7nz58D8TJOUeB+rjsf0oNUnyqff7HNrVzno2WBtaE5SlDvFpmrNTxXiWnzVY10Hojfb33zDQMo5xb0Zc2JSs3V31p+e1e3dh/vfrGIl4py2g43VbT9cRq3Z0WNDRm3at4vHDMHsmv0F9NiQM8hcfv2LeTHTt5n5I3GeY="
   
 
 
