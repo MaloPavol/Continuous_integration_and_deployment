@@ -20,8 +20,8 @@
 	<distributionManagement>
 		<site>
 			<id>site_id</id>
-			<!--<url>scm:git:ssh://git@github.com/MaloPavol/Continuous_integration_and_deployment.git</url>-->
-			<url>scm:git:https://gitbox.apache.org/repos/asf/maven-scm-publish-plugin.git</url>
+			<url>scm:git:ssh://git@github.com/MaloPavol/Continuous_integration_and_deployment.git</url>
+			<!--<url>scm:git:https://gitbox.apache.org/repos/asf/maven-scm-publish-plugin.git</url>-->
 		</site>
 	</distributionManagement>
 
@@ -125,7 +125,7 @@
 				<artifactId>maven-scm-publish-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<scmBranch>gh-pages</scmBranch>
+					<scmBranch>gh-pages2</scmBranch>
 				</configuration>
 			</plugin>
 
