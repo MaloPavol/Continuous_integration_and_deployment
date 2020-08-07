@@ -77,6 +77,13 @@
 			<version>2.8.6</version>
 		</dependency>
 
+		<dependency>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-site-plugin</artifactId>
+  			<version>3.9.1</version>
+  			<type>maven-plugin</type>
+		</dependency>
+
 
 
 
@@ -182,6 +189,10 @@
 				</configuration>
 				<executions>
 					<execution>
+						<id>attach-descriptor</id>
+        				<goals>
+          					<goal>attach-descriptor</goal>
+        				</goals>
 						<goals>
 							<goal>site</goal>
 						</goals>
