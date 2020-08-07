@@ -24,6 +24,7 @@ before_install:
 - sudo apt install openjfx
 - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
 - docker pull openjdk:8-jdk
+- echo "$GITHUB_OAUTH_TOKEN"
 
 install: true
 
