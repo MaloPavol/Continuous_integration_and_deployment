@@ -20,7 +20,8 @@
 	<distributionManagement>
 		<site>
 			<id>site_id</id>
-			<url>scm:git:ssh://git@github.com/MaloPavol/Continuous_integration_and_deployment.git</url><!-- or scm:git:https://gitbox.apache.org/repos/asf/maven-scm-publish-plugin.git -->
+			<!--<url>scm:git:ssh://git@github.com/MaloPavol/Continuous_integration_and_deployment.git</url>-->
+			<url>scm:git:https://gitbox.apache.org/repos/asf/maven-scm-publish-plugin.git</url>
 		</site>
 	</distributionManagement>
 
