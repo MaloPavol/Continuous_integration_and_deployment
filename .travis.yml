@@ -1,0 +1,40 @@
+language: java
+
+jdk: openjdk8
+
+services:
+- xvfb
+- docker
+
+dist: xenial
+
+addons:
+  sonarcloud:
+    organization: "continuous-integration-and-deployment"
+    token:
+      secure: "FppZ5G6pAld7kWUfQcxPw75a+KKdJ4rxMXsAmhOz3A2yhgz4mxo0cpcaaNjPO1GlLbSSvjWHL/8JH8xpifqHiK+Yuz5cC8Uib3uIIemeNm1yBtMUT3WH3mKaSxpERz5UusjPCW5f/Y6wouP3X6Y0JMVgrIhW89g8SAMs7Z8QAxqeiZESyigt3Z/OiK04qjQzMU8UMDRKrOeglfnI3u/xj1cAD9GLLXyFY7nvOgmaIQ+PgxxJ37+wY+NayB6RHRgibExpPm6sPsRY6iX3RrW31TICKMVGft/q7QTfBs+31IWSt7G+mZNifPcUfQOfsZpwIVjgAX70If3tbyL49BzshKkr0ABg6y0Omk428Z+H0cMNz/xUBbSbS6fvtvI6DE60COR6tSg5TODure5aZ5NA9rDBnv0Ptdop9Cdo7oz2xzYXQOSj9Os1aRJcPk04K2Ub5PES1K7fJBB4kIxJc631b3MFQFKecwsA2imUGFzoEnnuftXXtE7VRfHdzd+xBnQy2RYJF+MDbMt0vcnskwRbaAaHWmK0MDbWu9p5TWXvjjeFVs9FKWXJoP9N91v91M/9p5gQA0blGun1f20iKR5qSqwixDvxFM/bGtxs3NmjowZINEBzMUw6nBahuyA0JEG2uWEZs6ceVOFQ6/IRrAtecl+Jofv0LRT0HN4uQtWli2s="
+
+env:
+  global:
+    secure: EC8SZ7yuzW8YMDsC6XVKpEp7uk5rMukn9bfGwksyq/7WYU9Lysd6yoOyG88xG9f+dUJ6tjt3YCOJJ3JLCWN03OTHrWvKeC4VZe3sdFVjdH+Z86BXKR8lHJOUWpRmbjSW830yJz48SectyYwGd5gR7CWU/7Zz6e8ufk1wHliUjI9QTqxhIhECNI14oatWthl8RGRWRNOv3kLpJgQLVhBFL4Fw84in07rI3IPE4h7fRhQEo7iu0u8qWpVZxpY/Qx2O2ahd82BC+O+MPhcSpv7bPeenj04A1Ceviby3XZdWR9miOe15Z9wtIDUYk8/mesF2bToZRFtTLLMsIMC79PUj4yFJGgvzUB/GB6Hp5KquLCGCANtRiaOVlVLSOKZdFY/yTtFCkmYKwfe0+zODD3htdpGPtBrpiFG7w9UOOdxHlxLHu6W6G6spPDkIx/hPlQvpprCYgMoByVC3x2RISy+g9qcrBXv9kai+39jDqcZ4e8btycZ8n3H9kH9ob03Skkp02bw8opn0Fjt8m0Z1TqXB6RUmLF5OI01lRhZn2IQAyCByvQSSfIroJZlqSfPHrK7TREzbvuj8WUMFU6bLLXb8Rhq8kSfxaKImN//xV1ZyN91y6Sh6geL8Ou9AF8B+5ycIApXRuVRqPn9NUFnmmKq7cPEdXiYpVJ2OYGKn67RA+Lg=
+      
+
+before_install:
+- sudo apt update
+- sudo apt install openjfx
+- echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+- docker pull openjdk:8-jdk
+- echo "$GITHUB_OAUTH_TOKEN"
+
+install: true
+
+script:
+- echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
+- cat $HOME/.m2/settings.xml
+- "./build.sh"
+
+after_success:
+# - travis_wait mvn site
+- mvn site:stage
+- mvn scm-publish:publish-scm 
+- bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
