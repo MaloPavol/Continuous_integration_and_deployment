@@ -188,12 +188,9 @@
 
 				</configuration>
 				<executions>
+
 					<execution>
-						<id>attach-descriptor</id>
         				<goals>
-          					<goal>attach-descriptor</goal>
-        				</goals>
-						<goals>
 							<goal>site</goal>
 						</goals>
 						<phase>site</phase>
