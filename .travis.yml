@@ -38,4 +38,6 @@ after_success:
 - mvn site:stage
 - mvn scm-publish:publish-scm 
 - bash <(curl -s https://codecov.io/bash) -t "$CODECOV_TOKEN"
+# - heroku buildpacks:clear
+- heroku buildpacks:clear --app continuous-integration-and-dpl
 - mvn heroku:deploy
